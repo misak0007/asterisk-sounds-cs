@@ -1,11 +1,10 @@
 #!/bin/bash
 VERSION=0.1.1
-rm -rf tmp
 rm make_download make_build make_prepare
 mkdir tmp
 
 for fmt in alaw g722 g729 gsm opus sln16 ulaw wav siren7 siren14; do
-if [ ! -f tmp/asterisk-sound,asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz ];then wget -P tmp https://github.com/misak0007/asterisk-core-sounds-cs/releases/download/v${VERSION}/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz;fi
+if [ ! -f tmp/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz ];then wget -P tmp https://github.com/misak0007/asterisk-core-sounds-cs/releases/download/v${VERSION}/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz;fi
 suma=$(sha256sum tmp/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz | cut -d" " -f1)
 cat <<EOF >> make_download
 ifneq (\$(CONFIG_PACKAGE_asterisk-core-sound-cs-${fmt}-ladislav)\$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-${fmt}-ladislav),)
@@ -13,11 +12,11 @@ ifneq (\$(CONFIG_PACKAGE_asterisk-core-sound-cs-${fmt}-ladislav)\$(CONFIG_PACKAG
 endif
 EOF
 cat <<EOF >> make_build
-\$(eval \$(call BuildasteriskCoreSound,${fmt},Csech core sound Files. ${fmt} format,))
-\$(eval \$(call BuildasteriskCoreSoundVoicemail,${fmt},Csech core sound voicemail Files. ${fmt} format,))
+\$(eval \$(call BuildasteriskCoreSound,${fmt},Csech core sound Files. ${fmt} format,ladislav))
+\$(eval \$(call BuildasteriskCoreSoundVoicemail,${fmt},Csech core sound voicemail Files. ${fmt} format,ladislav))
 EOF
 cat <<EOF >> make_prepare
-ifneq (\$(CONFIG_PACKAGE_asterisk-core-sound-cs-${fmt})\$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-${fmt}),)
+ifneq (\$(CONFIG_PACKAGE_asterisk-core-sound-cs-${fmt}-ladislav)\$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-${fmt}-ladislav),)
 	\$(HOST_TAR) -C \$(PKG_BUILD_DIR)/core-cs -xzf \$(DL_DIR)/asterisk-core-sounds-cs-${fmt}-ladislav-v\$(PKG_VERSION).tar.gz
 endif
 EOF

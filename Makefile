@@ -28,7 +28,7 @@ define Package/asterisk-sound-cs/Default
 endef
 
 define Download/asterisk-sound
-  URL:=https://github.com/misak0007/asterisk-core-sounds-cs/releases/tag/v$(PKG_VERSION)
+  URL:=https://github.com/misak0007/asterisk-core-sounds-cs/releases/download/v$(PKG_VERSION)
   FILE:=$(2).tar.gz
   URL_FILE:$(2).tar.gz
   HASH:=$(3)
@@ -68,34 +68,34 @@ endif
 
 define Build/Prepare
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/core-cs
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-alaw)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-alaw),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-alaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-alaw-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-alaw-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g722)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g722),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g722-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g722-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-g722-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g729)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g729),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g729-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g729-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-g729-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-gsm)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-gsm),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-gsm-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-gsm-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-gsm-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-opus)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-opus),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-opus-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-opus-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-opus-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-sln16)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-sln16),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-sln16-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-sln16-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-sln16-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-ulaw)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-ulaw),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-ulaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-ulaw-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-ulaw-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-wav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-wav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-wav-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-wav-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-wav-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren7)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren7),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren7-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren7-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-siren7-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren14)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren14),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren14-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren14-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-siren14-ladislav-v$(PKG_VERSION).tar.gz
 endif
 endef
@@ -114,74 +114,74 @@ define Package/asterisk/install/sounds
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/letters
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/phonetic
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/silence
-	$(CP) $(PKG_BUILD_DIR)/cs/dictate/*.$(2) $(1)/usr/share/asterisk/sounds/dictate
-	$(CP) $(PKG_BUILD_DIR)/cs/digits/*.$(2) $(1)/usr/share/asterisk/sounds/digits
-	$(CP) $(PKG_BUILD_DIR)/cs/followme/*.$(2) $(1)/usr/share/asterisk/sounds/followme
-	$(CP) $(PKG_BUILD_DIR)/cs/letters/*.$(2) $(1)/usr/share/asterisk/sounds/letters
-	$(CP) $(PKG_BUILD_DIR)/cs/phonetic/*.$(2) $(1)/usr/share/asterisk/sounds/phonetic
-	$(CP) $(PKG_BUILD_DIR)/cs/silence/*.$(2) $(1)/usr/share/asterisk/sounds/silence
-	$(CP) $(PKG_BUILD_DIR)/cs/*.$(2) $(1)/usr/share/asterisk/sounds/
+	$(CP) $(PKG_BUILD_DIR)/core-cs/dictate/*.$(2) $(1)/usr/share/asterisk/sounds/dictate
+	$(CP) $(PKG_BUILD_DIR)/core-cs/digits/*.$(2) $(1)/usr/share/asterisk/sounds/digits
+	$(CP) $(PKG_BUILD_DIR)/core-cs/followme/*.$(2) $(1)/usr/share/asterisk/sounds/followme
+	$(CP) $(PKG_BUILD_DIR)/core-cs/letters/*.$(2) $(1)/usr/share/asterisk/sounds/letters
+	$(CP) $(PKG_BUILD_DIR)/core-cs/phonetic/*.$(2) $(1)/usr/share/asterisk/sounds/phonetic
+	$(CP) $(PKG_BUILD_DIR)/core-cs/silence/*.$(2) $(1)/usr/share/asterisk/sounds/silence
+	$(CP) $(PKG_BUILD_DIR)/core-cs/*.$(2) $(1)/usr/share/asterisk/sounds/
 	rm -f $(1)/usr/share/asterisk/sounds/vm-*
 endef
 
 define Package/asterisk/install/voicemail
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/
-	$(CP) $(PKG_BUILD_DIR)/cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/
+	$(CP) $(PKG_BUILD_DIR)/core-cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/
 endef
 
 define BuildasteriskCoreSound
-  define Package/asterisk-core-sound-cs-$(1)
+  define Package/asterisk-core-sound-cs-$(1)-$(3)
   $$(call Package/asterisk-sound-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)/description
+  define Package/asterisk-core-sound-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)/install
+  define Package/asterisk-core-sound-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/sounds,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-cs-$(1)))
+  $$(eval $$(call BuildPackage,asterisk-core-sound-cs-$(1)-$(3)))
 endef
 
-define BuildasteriskVoicemail
-  define Package/asterisk-core-sound-cs-$(1)
+define BuildasteriskCoreSoundVoicemail
+  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)
   $$(call Package/asterisk-sound-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)/description
+  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)/install
+  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/voicemail,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-cs-$(1)))
+  $$(eval $$(call BuildPackage,asterisk-core-sound-voicemail-cs-$(1)-$(3)))
 endef
 
-$(eval $(call BuildasteriskCoreSound,alaw,Csech core sound Files. alaw format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,alaw,Csech core sound voicemail Files. alaw format,))
-$(eval $(call BuildasteriskCoreSound,g722,Csech core sound Files. g722 format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,g722,Csech core sound voicemail Files. g722 format,))
-$(eval $(call BuildasteriskCoreSound,g729,Csech core sound Files. g729 format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,g729,Csech core sound voicemail Files. g729 format,))
-$(eval $(call BuildasteriskCoreSound,gsm,Csech core sound Files. gsm format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,gsm,Csech core sound voicemail Files. gsm format,))
-$(eval $(call BuildasteriskCoreSound,opus,Csech core sound Files. opus format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,opus,Csech core sound voicemail Files. opus format,))
-$(eval $(call BuildasteriskCoreSound,sln16,Csech core sound Files. sln16 format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,sln16,Csech core sound voicemail Files. sln16 format,))
-$(eval $(call BuildasteriskCoreSound,ulaw,Csech core sound Files. ulaw format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,ulaw,Csech core sound voicemail Files. ulaw format,))
-$(eval $(call BuildasteriskCoreSound,wav,Csech core sound Files. wav format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,wav,Csech core sound voicemail Files. wav format,))
-$(eval $(call BuildasteriskCoreSound,siren7,Csech core sound Files. siren7 format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,siren7,Csech core sound voicemail Files. siren7 format,))
-$(eval $(call BuildasteriskCoreSound,siren14,Csech core sound Files. siren14 format,))
-$(eval $(call BuildasteriskCoreSoundVoicemail,siren14,Csech core sound voicemail Files. siren14 format,))
+$(eval $(call BuildasteriskCoreSound,alaw,Csech core sound Files. alaw format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,alaw,Csech core sound voicemail Files. alaw format,ladislav))
+$(eval $(call BuildasteriskCoreSound,g722,Csech core sound Files. g722 format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,g722,Csech core sound voicemail Files. g722 format,ladislav))
+$(eval $(call BuildasteriskCoreSound,g729,Csech core sound Files. g729 format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,g729,Csech core sound voicemail Files. g729 format,ladislav))
+$(eval $(call BuildasteriskCoreSound,gsm,Csech core sound Files. gsm format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,gsm,Csech core sound voicemail Files. gsm format,ladislav))
+$(eval $(call BuildasteriskCoreSound,opus,Csech core sound Files. opus format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,opus,Csech core sound voicemail Files. opus format,ladislav))
+$(eval $(call BuildasteriskCoreSound,sln16,Csech core sound Files. sln16 format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,sln16,Csech core sound voicemail Files. sln16 format,ladislav))
+$(eval $(call BuildasteriskCoreSound,ulaw,Csech core sound Files. ulaw format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,ulaw,Csech core sound voicemail Files. ulaw format,ladislav))
+$(eval $(call BuildasteriskCoreSound,wav,Csech core sound Files. wav format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,wav,Csech core sound voicemail Files. wav format,ladislav))
+$(eval $(call BuildasteriskCoreSound,siren7,Csech core sound Files. siren7 format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,siren7,Csech core sound voicemail Files. siren7 format,ladislav))
+$(eval $(call BuildasteriskCoreSound,siren14,Csech core sound Files. siren14 format,ladislav))
+$(eval $(call BuildasteriskCoreSoundVoicemail,siren14,Csech core sound voicemail Files. siren14 format,ladislav))

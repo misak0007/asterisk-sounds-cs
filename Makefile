@@ -35,67 +35,67 @@ define Download/asterisk-sound
   SUBDIR:=$(PKG_SOURCE_SUBDIR)
 endef
 
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-alaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-alaw-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-alaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-alaw-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-alaw-ladislav-v$(PKG_VERSION),a1de85c7a67c493aad4c3f4971a20b6849d5dab5305d374b968ac38ea3e6cc8c))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g722-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-g722-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-g722-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-g722-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-g722-ladislav-v$(PKG_VERSION),ee5dc668f781af06735505bc686d39a363da8fc18f944619c6b3a4f3958f92df))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g729-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-g729-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-g729-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-g729-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-g729-ladislav-v$(PKG_VERSION),359f51c5d4d4a8d0b2232d542b17119a49c2cedfb7d7c2b087a50cdd96a9ebd0))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-gsm-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-gsm-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-gsm-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-gsm-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-gsm-ladislav-v$(PKG_VERSION),ae76a00dbe289adb5cba37bbb3ae0db17620e815330a1d10f71a278883ccb064))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-opus-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-opus-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-opus-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-opus-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-opus-ladislav-v$(PKG_VERSION),fe50da635368cf516a3f32013831cacc03b574c5e59c7d330495fca0d7ef66c0))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-sln16-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-sln16-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-sln16-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-sln16-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-sln16-ladislav-v$(PKG_VERSION),bebe3dbc5afb133ed2c7b297d868f01efc74fd5cca621fe9efa5ba683c4eee9f))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-ulaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-ulaw-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-ulaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-ulaw-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-ulaw-ladislav-v$(PKG_VERSION),8e323cbdb99315e8aeacb976cca7f7de5145ced43c18b8bd906f24a5621d5d2d))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-wav-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-wav-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-wav-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-wav-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-wav-ladislav-v$(PKG_VERSION),c144fc18a1dffb3c029c74a2b1567ec98868c68382280e84b89f0ce81a01d671))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren7-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-siren7-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-siren7-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-siren7-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-siren7-ladislav-v$(PKG_VERSION),133b9831103224bebdef04eb46192c09ddb30637358c9419849c90567968a902))
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren14-ladislav)$(CONFIG_PACKAGE_asterisk-core-voicemail-cs-siren14-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-siren14-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-siren14-ladislav),)
 $(eval $(call Download,asterisk-sound,asterisk-core-sounds-cs-siren14-ladislav-v$(PKG_VERSION),bc0a8b44bc96de1d279bd2642bb397ea1e866c753f18064217962600a78301d8))
 endif
 
 define Build/Prepare
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/core-cs
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-alaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-alaw-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-alaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-alaw-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-alaw-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g722-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g722-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-g722-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-g722-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-g722-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-g729-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-g729-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-g729-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-g729-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-g729-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-gsm-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-gsm-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-gsm-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-gsm-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-gsm-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-opus-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-opus-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-opus-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-opus-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-opus-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-sln16-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-sln16-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-sln16-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-sln16-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-sln16-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-ulaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-ulaw-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-ulaw-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-ulaw-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-ulaw-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-wav-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-wav-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-wav-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-wav-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-wav-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren7-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren7-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-siren7-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-siren7-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-siren7-ladislav-v$(PKG_VERSION).tar.gz
 endif
-ifneq ($(CONFIG_PACKAGE_asterisk-core-sound-cs-siren14-ladislav)$(CONFIG_PACKAGE_asterisk-core-sound-voicemail-cs-siren14-ladislav),)
+ifneq ($(CONFIG_PACKAGE_asterisk-core-sounds-cs-siren14-ladislav)$(CONFIG_PACKAGE_asterisk-core-sounds-voicemail-cs-siren14-ladislav),)
 	$(HOST_TAR) -C $(PKG_BUILD_DIR)/core-cs -xzf $(DL_DIR)/asterisk-core-sounds-cs-siren14-ladislav-v$(PKG_VERSION).tar.gz
 endif
 endef

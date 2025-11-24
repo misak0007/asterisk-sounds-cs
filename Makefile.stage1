@@ -7,12 +7,12 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=asterisk-sound-cs
+PKG_NAME:=asterisk-sounds-cs
 PKG_VERSION:=@VERSION@
 PKG_RELEASE:=1
 PKG_BUILD_PARALLEL:=0
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sound-cs-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sounds-cs-$(PKG_VERSION)
 
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=COPYING LICENSE
@@ -21,7 +21,7 @@ PKG_MAINTAINER:=Michael Gruz <michael.gruz@gmail.com>
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/download.mk
 
-define Package/asterisk-sound-cs/Default
+define Package/asterisk-sounds-cs/Default
   SUBMENU:=Telephony
   SECTION:=net
   CATEGORY:=Network

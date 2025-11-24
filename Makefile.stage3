@@ -30,38 +30,38 @@ define Package/asterisk/install/voicemail
 endef
 
 define BuildasteriskCoreSound
-  define Package/asterisk-core-sound-cs-$(1)-$(3)
-  $$(call Package/asterisk-sound-cs/Default)
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)
+  $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)-$(3)/description
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)-$(3)/install
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/sounds,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-cs-$(1)-$(3)))
+  $$(eval $$(call BuildPackage,asterisk-core-sounds-cs-$(1)-$(3)))
 endef
 
 define BuildasteriskCoreSoundVoicemail
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)
-  $$(call Package/asterisk-sound-cs/Default)
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)
+  $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/description
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/install
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/voicemail,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-voicemail-cs-$(1)-$(3)))
+  $$(eval $$(call BuildPackage,asterisk-core-sounds-voicemail-cs-$(1)-$(3)))
 endef
 

@@ -7,12 +7,12 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=asterisk-sound-cs
+PKG_NAME:=asterisk-sounds-cs
 PKG_VERSION:=0.1.1
 PKG_RELEASE:=1
 PKG_BUILD_PARALLEL:=0
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sound-cs-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sounds-cs-$(PKG_VERSION)
 
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=COPYING LICENSE
@@ -21,7 +21,7 @@ PKG_MAINTAINER:=Michael Gruz <michael.gruz@gmail.com>
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/download.mk
 
-define Package/asterisk-sound-cs/Default
+define Package/asterisk-sounds-cs/Default
   SUBMENU:=Telephony
   SECTION:=net
   CATEGORY:=Network
@@ -130,39 +130,39 @@ define Package/asterisk/install/voicemail
 endef
 
 define BuildasteriskCoreSound
-  define Package/asterisk-core-sound-cs-$(1)-$(3)
-  $$(call Package/asterisk-sound-cs/Default)
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)
+  $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)-$(3)/description
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-cs-$(1)-$(3)/install
+  define Package/asterisk-core-sounds-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/sounds,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-cs-$(1)-$(3)))
+  $$(eval $$(call BuildPackage,asterisk-core-sounds-cs-$(1)-$(3)))
 endef
 
 define BuildasteriskCoreSoundVoicemail
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)
-  $$(call Package/asterisk-sound-cs/Default)
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)
+  $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
   endef
 
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/description
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)/description
 $(2)
   endef
 
-  define Package/asterisk-core-sound-voicemail-cs-$(1)-$(3)/install
+  define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)/install
 $(call Package/asterisk/install/voicemail,$$(1),$(1))
   endef
 
-  $$(eval $$(call BuildPackage,asterisk-core-sound-voicemail-cs-$(1)-$(3)))
+  $$(eval $$(call BuildPackage,asterisk-core-sounds-voicemail-cs-$(1)-$(3)))
 endef
 
 $(eval $(call BuildasteriskCoreSound,alaw,Csech core sound Files. alaw format,ladislav))

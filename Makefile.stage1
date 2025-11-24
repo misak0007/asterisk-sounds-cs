@@ -1,0 +1,37 @@
+#
+# Copyright (C) 2025 OpenWrt.org
+#
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=asterisk-sound-cs
+PKG_VERSION:=@VERSION@
+PKG_RELEASE:=1
+PKG_BUILD_PARALLEL:=0
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sound-cs-$(PKG_VERSION)
+
+PKG_LICENSE:=GPL-3.0
+PKG_LICENSE_FILES:=COPYING LICENSE
+PKG_MAINTAINER:=Michael Gruz <michael.gruz@gmail.com>
+
+include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/download.mk
+
+define Package/asterisk-sound-cs/Default
+  SUBMENU:=Telephony
+  SECTION:=net
+  CATEGORY:=Network
+endef
+
+define Download/asterisk-sound
+  URL:=https://github.com/misak0007/asterisk-core-sounds-cs/releases/tag/v$(PKG_VERSION)
+  FILE:=$(2).tar.gz
+  URL_FILE:$(2).tar.gz
+  HASH:=$(3)
+  SUBDIR:=$(PKG_SOURCE_SUBDIR)
+endef
+

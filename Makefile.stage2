@@ -1,0 +1,3 @@
+
+define Build/Prepare
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/core-cs

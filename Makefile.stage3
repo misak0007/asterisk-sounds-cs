@@ -1,0 +1,67 @@
+endef
+
+define Build/Configure
+endef
+
+define Build/Compile
+endef
+
+define Package/asterisk/install/sounds
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/dictate
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/digits
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/followme
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/letters
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/phonetic
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/silence
+	$(CP) $(PKG_BUILD_DIR)/cs/dictate/*.$(2) $(1)/usr/share/asterisk/sounds/dictate
+	$(CP) $(PKG_BUILD_DIR)/cs/digits/*.$(2) $(1)/usr/share/asterisk/sounds/digits
+	$(CP) $(PKG_BUILD_DIR)/cs/followme/*.$(2) $(1)/usr/share/asterisk/sounds/followme
+	$(CP) $(PKG_BUILD_DIR)/cs/letters/*.$(2) $(1)/usr/share/asterisk/sounds/letters
+	$(CP) $(PKG_BUILD_DIR)/cs/phonetic/*.$(2) $(1)/usr/share/asterisk/sounds/phonetic
+	$(CP) $(PKG_BUILD_DIR)/cs/silence/*.$(2) $(1)/usr/share/asterisk/sounds/silence
+	$(CP) $(PKG_BUILD_DIR)/cs/*.$(2) $(1)/usr/share/asterisk/sounds/
+	rm -f $(1)/usr/share/asterisk/sounds/vm-*
+endef
+
+define Package/asterisk/install/voicemail
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/
+	$(CP) $(PKG_BUILD_DIR)/cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/
+endef
+
+define BuildasteriskCoreSound
+  define Package/asterisk-core-sound-$(1)
+  $$(call Package/asterisk-sound-cs/Default)
+    TITLE:=Sound support
+    DEPENDS:=asterisk
+  endef
+
+  define Package/asterisk-core-sound-$(1)/description
+$(2)
+  endef
+
+  define Package/asterisk-core-sound-$(1)/install
+$(call Package/asterisk/install/sounds,$$(1),$(1))
+  endef
+
+  $$(eval $$(call BuildPackage,asterisk-core-sound-$(1)))
+endef
+
+define BuildasteriskVoicemail
+  define Package/asterisk-core-sound-$(1)
+  $$(call Package/asterisk-sound-cs/Default)
+    TITLE:=Sound support
+    DEPENDS:=asterisk
+  endef
+
+  define Package/asterisk-core-sound-$(1)/description
+$(2)
+  endef
+
+  define Package/asterisk-core-sound-$(1)/install
+$(call Package/asterisk/install/voicemail,$$(1),$(1))
+  endef
+
+  $$(eval $$(call BuildPackage,asterisk-core-sound-$(1)))
+endef
+

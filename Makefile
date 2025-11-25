@@ -107,26 +107,26 @@ define Build/Compile
 endef
 
 define Package/asterisk/install/sounds
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/dictate
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/digits
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/followme
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/letters
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/phonetic
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/silence
-	$(CP) $(PKG_BUILD_DIR)/core-cs/dictate/*.$(2) $(1)/usr/share/asterisk/sounds/dictate
-	$(CP) $(PKG_BUILD_DIR)/core-cs/digits/*.$(2) $(1)/usr/share/asterisk/sounds/digits
-	$(CP) $(PKG_BUILD_DIR)/core-cs/followme/*.$(2) $(1)/usr/share/asterisk/sounds/followme
-	$(CP) $(PKG_BUILD_DIR)/core-cs/letters/*.$(2) $(1)/usr/share/asterisk/sounds/letters
-	$(CP) $(PKG_BUILD_DIR)/core-cs/phonetic/*.$(2) $(1)/usr/share/asterisk/sounds/phonetic
-	$(CP) $(PKG_BUILD_DIR)/core-cs/silence/*.$(2) $(1)/usr/share/asterisk/sounds/silence
-	$(CP) $(PKG_BUILD_DIR)/core-cs/*.$(2) $(1)/usr/share/asterisk/sounds/
-	rm -f $(1)/usr/share/asterisk/sounds/vm-*
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/dictate
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/digits
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/followme
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/letters
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/phonetic
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/silence
+	$(CP) $(PKG_BUILD_DIR)/core-cs/dictate/*.$(2) $(1)/usr/share/asterisk/sounds/cs/dictate
+	$(CP) $(PKG_BUILD_DIR)/core-cs/digits/*.$(2) $(1)/usr/share/asterisk/sounds/cs/digits
+	$(CP) $(PKG_BUILD_DIR)/core-cs/followme/*.$(2) $(1)/usr/share/asterisk/sounds/cs/followme
+	$(CP) $(PKG_BUILD_DIR)/core-cs/letters/*.$(2) $(1)/usr/share/asterisk/sounds/cs/letters
+	$(CP) $(PKG_BUILD_DIR)/core-cs/phonetic/*.$(2) $(1)/usr/share/asterisk/sounds/cs/phonetic
+	$(CP) $(PKG_BUILD_DIR)/core-cs/silence/*.$(2) $(1)/usr/share/asterisk/sounds/cs/silence
+	$(CP) $(PKG_BUILD_DIR)/core-cs/*.$(2) $(1)/usr/share/asterisk/sounds/cs
+	rm -f $(1)/usr/share/asterisk/sounds/cs/vm-*
 endef
 
 define Package/asterisk/install/voicemail
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/
-	$(CP) $(PKG_BUILD_DIR)/core-cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(CP) $(PKG_BUILD_DIR)/core-cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/cs
 endef
 
 define BuildasteriskCoreSound

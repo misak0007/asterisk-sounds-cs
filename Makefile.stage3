@@ -7,7 +7,7 @@ define Build/Compile
 endef
 
 define Package/asterisk/install/sounds
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/dictate
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/digits
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/followme
@@ -25,7 +25,7 @@ define Package/asterisk/install/sounds
 endef
 
 define Package/asterisk/install/voicemail
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs
 	$(CP) $(PKG_BUILD_DIR)/core-cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/cs
 endef
 

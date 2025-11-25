@@ -11,7 +11,6 @@ PKG_NAME:=asterisk-sounds-cs
 PKG_VERSION:=0.1.1
 PKG_RELEASE:=1
 PKG_BUILD_PARALLEL:=0
-PKGARCH:=all
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sounds-cs-$(PKG_VERSION)
 
@@ -23,6 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/download.mk
 
 define Package/asterisk-sounds-cs/Default
+  PKGARCH:=all
   SUBMENU:=Telephony
   SECTION:=net
   CATEGORY:=Network
@@ -135,6 +135,7 @@ define BuildasteriskCoreSound
   $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
+    PROVIDES:=asterisk-core-sounds-cs-$(1)
   endef
 
   define Package/asterisk-core-sounds-cs-$(1)-$(3)/description
@@ -153,6 +154,7 @@ define BuildasteriskCoreSoundVoicemail
   $$(call Package/asterisk-sounds-cs/Default)
     TITLE:=Sound support
     DEPENDS:=asterisk
+    PROVIDES:=asterisk-core-sounds-voicemail-cs-$(1)
   endef
 
   define Package/asterisk-core-sounds-voicemail-cs-$(1)-$(3)/description

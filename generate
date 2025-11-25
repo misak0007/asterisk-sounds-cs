@@ -1,7 +1,7 @@
 #!/bin/bash
 VERSION=0.1.1
 rm make_download make_build make_prepare
-mkdir tmp
+if [ ! -d tmp ];then mkdir tmp;fi
 
 for fmt in alaw g722 g729 gsm opus sln16 ulaw wav siren7 siren14; do
 if [ ! -f tmp/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz ];then wget -P tmp https://github.com/misak0007/asterisk-core-sounds-cs/releases/download/v${VERSION}/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz;fi

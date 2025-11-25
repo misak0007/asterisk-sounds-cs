@@ -11,6 +11,7 @@ PKG_NAME:=asterisk-sounds-cs
 PKG_VERSION:=0.1.1
 PKG_RELEASE:=1
 PKG_BUILD_PARALLEL:=0
+PKGARCH:=all
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/asterisk-sounds-cs-$(PKG_VERSION)
 
@@ -107,7 +108,7 @@ define Build/Compile
 endef
 
 define Package/asterisk/install/sounds
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/dictate
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/digits
 	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/followme
@@ -125,7 +126,7 @@ define Package/asterisk/install/sounds
 endef
 
 define Package/asterisk/install/voicemail
-	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs/
+	$(INSTALL_DIR) $(1)/usr/share/asterisk/sounds/cs
 	$(CP) $(PKG_BUILD_DIR)/core-cs/vm-*.$(2) $(1)/usr/share/asterisk/sounds/cs
 endef
 

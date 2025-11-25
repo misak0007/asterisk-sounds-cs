@@ -4,6 +4,7 @@ rm make_download make_build make_prepare
 if [ ! -d tmp ];then mkdir tmp;fi
 
 for fmt in alaw g722 g729 gsm opus sln16 ulaw wav siren7 siren14; do
+echo "${fmt}"
 if [ ! -f tmp/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz ];then wget -P tmp https://github.com/misak0007/asterisk-core-sounds-cs/releases/download/v${VERSION}/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz;fi
 suma=$(sha256sum tmp/asterisk-core-sounds-cs-${fmt}-ladislav-v${VERSION}.tar.gz | cut -d" " -f1)
 cat <<EOF >> make_download
